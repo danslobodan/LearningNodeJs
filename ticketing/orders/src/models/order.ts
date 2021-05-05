@@ -1,5 +1,6 @@
 import { Schema, Model, Document, model } from 'mongoose';
 import { OrderStatus } from '@sdtickets/common';
+import { TicketDoc } from './ticket';
 
 interface OrderAttrs {
     userId: string;
