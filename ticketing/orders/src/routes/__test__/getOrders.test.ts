@@ -1,6 +1,5 @@
 import request from 'supertest';
 import { app } from '../../app';
-import { Order } from '../../models/order';
 import { Ticket } from '../../models/ticket';
 
 const buildTicket = async () => {
@@ -35,11 +34,10 @@ it('fetches orders for a particular user', async () => {
         .set('Cookie', userTwo)
         .send({ ticketId: ticketThree.id });
 
-    const orders = await Order.find();
-
     const response = await request(app)
         .get('/api/orders')
         .set('Cookie', userTwo)
+        .send()
         .expect(200);
 
     expect(response.body.length).toEqual(2);
